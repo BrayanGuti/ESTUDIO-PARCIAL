@@ -1,9 +1,17 @@
 class Nodo:
+    ##Comentarios son de codigos hechos por cristhian para otra manera de hacerlos
     
     def __init__(self, dato) -> None:
         self.dato = dato
         self.next = None
         self.anterior = None
+    
+    
+    
+        ### self.last = None
+   
+    def __repr__(self) -> str:
+        return (f"{self.dato}")
     
     def ver_dato(self):
         return self.dato
@@ -17,21 +25,30 @@ class Nodo:
     def colocar_siguiente(self, dato_siguiente) -> None:
         self.next = dato_siguiente
 
+     
+
 class Lista:
 
     def __init__(self) -> None:
         self.PTR = None    
-    
+        self.last = None
+
     def agregar (self, dato):
-        temp = Nodo(dato= dato)
-        temp.colocar_siguiente(self.PTR)
-        self.PTR = temp
+        temp = Nodo(dato= dato)    
+        if (self.PTR == None):
+            self.PTR = temp
+            self.Last = temp
+
+        else:
+            self.Last.next = temp
+            self.Last = temp        
     
+        
     def ver_lista(self):
         actual = self.PTR
         cadena = ""
         while actual != None:
-            cadena += "->" + "[" + str(actual.ver_dato()) + "]"
+            cadena +=   "[" + str(actual.ver_dato()) + "]" + "->"
             actual = actual.traer_siguiente()
         print(cadena)
     
@@ -67,7 +84,7 @@ class Lista:
     def eliminar_diferencia(self, List2):
         actual = self.PTR
         while (actual != None):
-            if(List2.buscar(actual.ver_dato()) ==  True):
+            if(List2.buscar(actual.ver_dato()) ==  False):
                 self.borrar(actual.ver_dato())
                 actual = actual.traer_siguiente()
             else:
@@ -86,5 +103,4 @@ class Lista:
             else:
                 actual = actual.traer_siguiente()
         print(F"Hay una cantidad de datos diferentes de {contador} y son: {cadena}")
-
 
