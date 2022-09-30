@@ -2,7 +2,8 @@ class Nodo:
     def __init__(self, dato) -> None:
         self.dato = dato
         self.next = None
-
+    def __repr__(self) -> str:
+        return str(self.dato)
 class Lista:
     def __init__(self) -> None:
         self.PTR = None
@@ -17,8 +18,7 @@ class Lista:
             cadena += "[" + str(actual.dato) + "]" + "->"  
             actual = actual.next
         cadena += "[" + str(actual.dato) + "]"  
-        actual = actual.next
-        
+      
         return(cadena)
     
     def agregar (self, dato)-> None:
@@ -33,12 +33,13 @@ class Lista:
            
         self.last.next = self.PTR
 
-    def agregar_nodos(self, lista2, subespacio) -> None:
+    def agregar_nodos(self, lista2, subespacio : int) -> None:
         iterador = 1
         actual = self.PTR
         while (iterador < subespacio):
             actual = actual.next
+            
             iterador += 1
         temp = actual.next    
         actual.next = lista2.PTR
-        lista2.last = temp.next
+        lista2.last.next = temp
