@@ -16,6 +16,8 @@ List_2.agregar(6)
 List_2.agregar(1)
 List_2.ver_lista()
 
-List_1.mostrar_diferrencias(List_2)
+List_1.eliminar_diferencia(List_2)
+List_1.ver_lista()
+
 
 
